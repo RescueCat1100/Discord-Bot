@@ -1,8 +1,8 @@
 {
   "prefix": "YOUR_BOT_PREFIX_HERE",
-  "token": "ODkwNjI1NzU3NTc4MTMzNTY0.GBFa2i.3qx_dNiWb_jUuXV6u1T2fD2vRk89fX0hIF23xw",
-  "permissions": "277599030336",
-  "application_id": "890625757578133564",
+  "token": "YOUR_BOT_TOKEN_HERE",
+  "permissions": "YOUR_BOT_PERMISSIONS_HERE",
+  "application_id": "YOUR_APPLICATION_ID_HERE",
   "owners": [340090263026532353],
 
   "ｼｰｸﾚｯﾄ": "SCR",
