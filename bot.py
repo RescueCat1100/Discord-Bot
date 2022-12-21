@@ -12,6 +12,8 @@ import platform
 import random
 import sys
 
+import datetime
+
 import disnake
 from disnake import ApplicationCommandInteraction
 from disnake.ext import tasks, commands
@@ -67,7 +69,7 @@ It is recommended to use slash commands and therefore not use prefix commands.
 
 If you want to use prefix commands, make sure to also enable the intent below in the Discord developer portal.
 """
-# intents.message_content = True
+#intents.message_content = True
 
 bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=intents, help_command=None)
 
@@ -143,7 +145,9 @@ async def on_slash_command(interaction: ApplicationCommandInteraction) -> None:
     :param interaction: The slash command that has been executed.
     """
     print(
-        f"Executed {interaction.data.name} command \nin {interaction.guild.name} (ID: {interaction.guild.id}) \nby {interaction.author} (ID: {interaction.author.id})")
+        f"Executed {interaction.data.name} command \nin {interaction.guild.name} (ID: {interaction.guild.id}) \
+        \nby {interaction.author} (ID: {interaction.author.id})")
+    print("at",datetime.datetime.now())
 
 
 @bot.event
@@ -162,7 +166,10 @@ async def on_slash_command_error(interaction: ApplicationCommandInteraction, err
         hours = hours % 24
         embed = disnake.Embed(
             title="Hey, please slow down!",
-            description=f"You can use this command again in {f'{round(hours)} hours' if round(hours) > 0 else ''} {f'{round(minutes)} minutes' if round(minutes) > 0 else ''} {f'{round(seconds)} seconds' if round(seconds) > 0 else ''}.",
+            description=f"You can use this command again in \
+            {f'{round(hours)} hours' if round(hours) > 0 else ''} \
+            {f'{round(minutes)} minutes' if round(minutes) > 0 else ''} \
+            {f'{round(seconds)} seconds' if round(seconds) > 0 else ''}.",
             color=0xE02B2B
         )
         return await interaction.send(embed=embed, ephemeral=True)
