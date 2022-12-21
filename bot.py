@@ -145,7 +145,7 @@ async def on_slash_command(interaction: ApplicationCommandInteraction) -> None:
     :param interaction: The slash command that has been executed.
     """
     print(
-        f"Executed {interaction.data.name} command \nin {interaction.guild.name} (ID: {interaction.guild.id}) \
+        f"\nExecuted {interaction.data.name} command \nin {interaction.guild.name} (ID: {interaction.guild.id}) \
         \nby {interaction.author} (ID: {interaction.author.id})")
     print("at",datetime.datetime.now())
 

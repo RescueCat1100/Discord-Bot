@@ -15,7 +15,7 @@ from disnake import ApplicationCommandInteraction, Option, OptionType
 from disnake.ext import commands
 from helpers import checks
 from pathlib import Path
-
+import os.path
 
 
 # Here we name the cog and create a new class for the cog.
@@ -101,9 +101,11 @@ class card_realted(commands.Cog, name="card-slash"):
                                 path = "pics/{}.jpg".format(id)
                 
                                 if Path(path).is_file():
-                                    print("Requested an already existed image")
+                                    with open('err.txt', "a") as err:
+                                        err.write("Requested an already existed image")
                                 else:
-                                    print("Requested a non-existed image. Downloading it...")
+                                    with open('err.txt', "a") as err:
+                                        err.write("Requested a non-existed image. Downloading it...")
                                     img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
                                     img_data = requests.get(img_url).content
                                     with open(path, 'wb') as handler:
@@ -164,9 +166,11 @@ class card_realted(commands.Cog, name="card-slash"):
                                 path = "pics/{}.jpg".format(id)
                 
                                 if Path(path).is_file():
-                                    print("Requested an already existed image")
+                                    with open('err.txt', "a") as err:
+                                        err.write("Requested an already existed image")
                                 else:
-                                    print("Requested a non-existed image. Downloading it...")
+                                    with open('err.txt', "a") as err:
+                                        err.write("Requested a non-existed image. Downloading it...")
                                     img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
                                     img_data = requests.get(img_url).content
                                     with open(path, 'wb') as handler:
