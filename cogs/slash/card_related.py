@@ -62,7 +62,8 @@ class card_realted(commands.Cog, name="card-slash"):
                             if re.sub('[^a-zA-Z0-9 \n\.]', ' ', input_name).lower() \
                             in re.sub('[^a-zA-Z0-9 \n\.]', ' ', en_name).lower():
                                 
-                                print("Finding similar name")
+                                with open('log.txt', "a") as err:
+                                    err.write("Finding similar name")
                                 embed = disnake.Embed(
                                 title=en_name,
                                 description=jp_name,
@@ -101,10 +102,10 @@ class card_realted(commands.Cog, name="card-slash"):
                                 path = "pics/{}.jpg".format(id)
                 
                                 if Path(path).is_file():
-                                    with open('err.txt', "a") as err:
+                                    with open('log.txt', "a") as err:
                                         err.write("Requested an already existed image")
                                 else:
-                                    with open('err.txt', "a") as err:
+                                    with open('log.txt', "a") as err:
                                         err.write("Requested a non-existed image. Downloading it...")
                                     img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
                                     img_data = requests.get(img_url).content
@@ -128,7 +129,8 @@ class card_realted(commands.Cog, name="card-slash"):
                         
                             if re.sub('[^a-zA-Z0-9 \n\.]', ' ', input_name).lower() \
                             == re.sub('[^a-zA-Z0-9 \n\.]', ' ', en_name).lower():
-                                print("Finding exact name")
+                                with open('log.txt', "a") as err:
+                                    err.write("Finding exact name")
                                 embed = disnake.Embed(
                                 title=en_name,
                                 description=jp_name,
@@ -166,10 +168,10 @@ class card_realted(commands.Cog, name="card-slash"):
                                 path = "pics/{}.jpg".format(id)
                 
                                 if Path(path).is_file():
-                                    with open('err.txt', "a") as err:
+                                    with open('log.txt', "a") as err:
                                         err.write("Requested an already existed image")
                                 else:
-                                    with open('err.txt', "a") as err:
+                                    with open('log.txt', "a") as err:
                                         err.write("Requested a non-existed image. Downloading it...")
                                     img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
                                     img_data = requests.get(img_url).content
@@ -189,7 +191,8 @@ class card_realted(commands.Cog, name="card-slash"):
                         description="There is something wrong with the server, please try again later. Or contact me at MeiMei#3717 on Discord if the error still continue",
                         color=0xE02B2B
                     )
-                print("Finish resolving (might be fizzle i don't know)")
+                with open('log.txt', "a") as err:
+                    err.write("Finished\n")
                 await interaction.send(embed=embed)
 
 
