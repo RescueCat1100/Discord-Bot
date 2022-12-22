@@ -38,6 +38,8 @@ class card_realted(commands.Cog, name="card-slash"):
         Note: This is a SLASH command
         :param interaction: The application command interaction.
         """
+        with open("log.txt", "a") as log:
+            log.write(input_name)
         async with aiohttp.ClientSession() as session:
             async with session.get("http://localhost:8000/cards.json") as r:
                 
@@ -62,8 +64,8 @@ class card_realted(commands.Cog, name="card-slash"):
                             if re.sub('[^a-zA-Z0-9 \n\.]', ' ', input_name).lower() \
                             in re.sub('[^a-zA-Z0-9 \n\.]', ' ', en_name).lower():
                                 
-                                with open('log.txt', "a") as err:
-                                    err.write("Finding similar name")
+                                with open('log.txt', "a") as log:
+                                    log.write("Finding similar name\n")
                                 embed = disnake.Embed(
                                 title=en_name,
                                 description=jp_name,
@@ -102,11 +104,11 @@ class card_realted(commands.Cog, name="card-slash"):
                                 path = "pics/{}.jpg".format(id)
                 
                                 if Path(path).is_file():
-                                    with open('log.txt', "a") as err:
-                                        err.write("Requested an already existed image")
+                                    with open('log.txt', "a") as log:
+                                        log.write("Requested an already existed image\n")
                                 else:
-                                    with open('log.txt', "a") as err:
-                                        err.write("Requested a non-existed image. Downloading it...")
+                                    with open('log.txt', "a") as log:
+                                        log.write("Requested a non-existed image. Downloading it...\n")
                                     img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
                                     img_data = requests.get(img_url).content
                                     with open(path, 'wb') as handler:
@@ -129,8 +131,8 @@ class card_realted(commands.Cog, name="card-slash"):
                         
                             if re.sub('[^a-zA-Z0-9 \n\.]', ' ', input_name).lower() \
                             == re.sub('[^a-zA-Z0-9 \n\.]', ' ', en_name).lower():
-                                with open('log.txt', "a") as err:
-                                    err.write("Finding exact name")
+                                with open('log.txt', "a") as log:
+                                    log.write("Finding exact name\n")
                                 embed = disnake.Embed(
                                 title=en_name,
                                 description=jp_name,
@@ -168,11 +170,11 @@ class card_realted(commands.Cog, name="card-slash"):
                                 path = "pics/{}.jpg".format(id)
                 
                                 if Path(path).is_file():
-                                    with open('log.txt', "a") as err:
-                                        err.write("Requested an already existed image")
+                                    with open('log.txt', "a") as log:
+                                        log.write("Requested an already existed image\n")
                                 else:
-                                    with open('log.txt', "a") as err:
-                                        err.write("Requested a non-existed image. Downloading it...")
+                                    with open('log.txt', "a") as log:
+                                        log.write("Requested a non-existed image. Downloading it...\n")
                                     img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
                                     img_data = requests.get(img_url).content
                                     with open(path, 'wb') as handler:
@@ -191,8 +193,8 @@ class card_realted(commands.Cog, name="card-slash"):
                         description="There is something wrong with the server, please try again later. Or contact me at MeiMei#3717 on Discord if the error still continue",
                         color=0xE02B2B
                     )
-                with open('log.txt', "a") as err:
-                    err.write("Finished\n")
+                with open('log.txt', "a") as log:
+                    log.write("Finished\n\n")
                 await interaction.send(embed=embed)
 
 
