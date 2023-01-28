@@ -15,7 +15,6 @@ from disnake import ApplicationCommandInteraction, Option, OptionType
 from disnake.ext import commands
 from helpers import checks
 from pathlib import Path
-import os.path
 
 
 # Here we name the cog and create a new class for the cog.
@@ -39,7 +38,7 @@ class card_realted(commands.Cog, name="card-slash"):
         :param interaction: The application command interaction.
         """
         with open("log.txt", "a") as log:
-            log.write(input_name)
+            log.write(input_name + "\n")
         async with aiohttp.ClientSession() as session:
             async with session.get("http://localhost:8000/cards.json") as r:
                 
