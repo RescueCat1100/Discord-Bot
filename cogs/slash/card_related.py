@@ -123,23 +123,26 @@ async def search_engine(input_string, url):
                                 embed.set_footer(text="Card ID: {}".format(id),)
                                 return embed
                 elif "code" in str(url):
+                    #embed = disnake.Embed()
                     for set_code in data:
-                        for code in set_code:
-                            card_name = set_code[code]["English name"]
-                            jp_name = set_code[code]["Japanese name"]
-                            id = set_code[code]["Card ID"]
-                            if re.sub('[^a-zA-Z0-9 \n\.]', ' ', str(input_string)).lower() \
-                            == re.sub('[^a-zA-Z0-9 \n\.]', ' ', str(code)).lower():
-                                embed = disnake.Embed(
-                                title=card_name,
-                                description=jp_name,
-                                timestamp=datetime.datetime.now(),
-                                color=0x9C84EF
-                                )
+                        if re.sub('[^a-zA-Z0-9 \n\.]', ' ', str(input_string)).lower() \
+                            in re.sub('[^a-zA-Z0-9 \n\.]', ' ', str(set_code)).lower():
+                            embed = disnake.Embed(
+                            title=set_code,
+                            #description=jp_name,
+                            timestamp=datetime.datetime.now(),
+                            color=0x9C84EF
+                            )
+                            for code in data[set_code]:
+                                card_name = code["English name"]
+                                jp_name = code["Japanese name"]
+                                id = code["Card ID"]
+                                
+                                
                                 price = "Out stock!"
-                                if set_code[code]['Price'] != 0:
-                                    price = "{} JPY".format(set_code[code]['Price'])
-                                rarity = set_code[code]['Rarity']
+                                if code['Details']['Price'] != 0:
+                                    price = "{} JPY".format(code['Details']['Price'])
+                                rarity = code['Details']['Rarity']
                                 if rarity == "ｼｰｸﾚｯﾄ":
                                     rarity = "SCR"
                                 elif rarity == "【TRC1】ﾚｱﾘﾃｨ･ｺﾚｸｼｮﾝ":
@@ -147,26 +150,26 @@ async def search_engine(input_string, url):
                                 elif rarity == "ｱﾙﾃｨﾒｯﾄ":
                                     rarity = "Ultimate R"
                                 
-                                condition = set_code[code]['Condition']
+                                condition = code['Details']['Condition']
                                 embed.add_field(name="Info", 
-                                value="{}\nPrice: {}\nRarity: {}\nCondition: {}" \
-                                .format(code, price, rarity, condition),
+                                value="Price: {}\nRarity: {}\nCondition: {}" \
+                                .format(price, rarity, condition),
                                 inline=True)
                                 
-                                id = int(id)
-                                path = "pics/{}.jpg".format(id)
+                            id = int(id)
+                            path = "pics/{}.jpg".format(id)
 
-                                if Path(path).is_file():
-                                    pass
-                                else:
-                                    img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
-                                    img_data = requests.get(img_url).content
-                                    with open(path, 'wb') as handler:
-                                        handler.write(img_data)
+                            if Path(path).is_file():
+                                pass
+                            else:
+                                img_url = "https://images.ygoprodeck.com/images/cards/{}.jpg".format(id)
+                                img_data = requests.get(img_url).content
+                                with open(path, 'wb') as handler:
+                                    handler.write(img_data)
 
-                                embed.set_image(file=disnake.File(path))
-                                embed.set_footer(text="Card ID: {}".format(id),)
-                                return embed
+                            embed.set_image(file=disnake.File(path))
+                            embed.set_footer(text="Card ID: {}".format(id),)
+                            return embed
                             #print(code)
                             #print(set_code[code]["English name"])
             else:
@@ -212,12 +215,13 @@ class card_realted(commands.Cog, name="card-slash"):
         await interaction.response.defer()
         with open("log.txt", "a") as log:
             log.write(input_code + "\n")
+        
         embed = disnake.Embed(
             title="Error!",
             description="Cannot find the card for now. \n Most likely our databases do not have the card.",
             color=0xE02B2B
         )
-        embed = await search_engine(input_string=input_code, url="http://localhost:8000/set_code.json")
+        embed = await search_engine(input_string=input_code, url="http://localhost:8000/formatted_set_code.json")
         await interaction.send(embed=embed)
 
 # And then we finally add the cog to the bot so that it can load, unload, reload and use it's content.
