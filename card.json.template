@@ -1,0 +1,48 @@
+[
+  {
+    "\"A\" Cell Breeding Device": {
+      "Japanese name": "「Ａ」細胞増殖装置",
+      "Card ID": "34541863",
+      "Img URL": "https://images.ygoprodeck.com/images/cards/34541863.jpg",
+      "Details": [
+        {
+          "DE01-JP149": {
+            "rarity": "N",
+            "price": 30,
+            "condition": "Good"
+          }
+        },
+        {
+          "FOTB-JP043": {
+            "rarity": "N",
+            "price": 20,
+            "condition": "Good"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "\"A\" Cell Incubator": {
+      "Japanese name": "「Ａ」細胞培養装置",
+      "Card ID": "64163367",
+      "Img URL": "https://images.ygoprodeck.com/images/cards/64163367.jpg",
+      "Details": [
+        {
+          "DE02-JP056": {
+            "rarity": "N",
+            "price": 30,
+            "condition": "Good"
+          }
+        },
+        {
+          "GLAS-JP062": {
+            "rarity": "N",
+            "price": 20,
+            "condition": "Good"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,4 +1,4 @@
-cards.json
+*.json
 pics/
 __pycache__
 log.txt

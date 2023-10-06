@@ -1,21 +1,7 @@
 {
-  "prefix": "YOUR_BOT_PREFIX_HERE",
-  "token": "YOUR_BOT_TOKEN_HERE",
-  "permissions": "YOUR_BOT_PERMISSIONS_HERE",
-  "application_id": "YOUR_APPLICATION_ID_HERE",
-  "owners": [340090263026532353],
-
-  "ｼｰｸﾚｯﾄ": "SCR",
-  "【TRC1】ﾚｱﾘﾃｨ･ｺﾚｸｼｮﾝ": "CR",
-  "ｱﾙﾃｨﾒｯﾄ": "UTM",
-  "SP": "SR",
-  "SPPR": "SPR",
-  "Mil-Super": "MSR",
-  "KC-Ultra": "KCUR",
-  "G": "GR",
-  "P-N": "NP",
-  "SE": "SCR",
-  "UL": "UTM",
-  "HR": "HL",
-  "ステンレス": "Stainless"
+	"prefix": "YOUR_BOT_PREFIX_HERE",
+	"token": "ODkwNjI1NzU3NTc4MTMzNTY0.GWL0PE.ToesJZQngFl1sP5LtGSjjfSzXX3A5VO5LTGeh8",
+	"permissions": "552440753216",
+	"application_id": "890625757578133564",
+	"owners": [340090263026532353]
 }

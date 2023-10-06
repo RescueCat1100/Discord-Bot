@@ -1,0 +1,38 @@
+[
+    {
+        "DE01-JP149": {
+            "English name": "\"A\" Cell Breeding Device",
+            "Japanese name": "「Ａ」細胞増殖装置",
+            "Card ID": "34541863",
+            "Details": {
+                "Rarity": "N",
+                "Price": 30,
+                "Condition": "Good"
+            }
+        }
+    },
+    {
+        "FOTB-JP043": {
+            "English name": "\"A\" Cell Breeding Device",
+            "Japanese name": "「Ａ」細胞増殖装置",
+            "Card ID": "34541863",
+            "Details": {
+                "Rarity": "N",
+                "Price": 20,
+                "Condition": "Good"
+            }
+        }
+    },
+    {
+        "DE02-JP056": {
+            "English name": "\"A\" Cell Incubator",
+            "Japanese name": "「Ａ」細胞培養装置",
+            "Card ID": "64163367",
+            "Details": {
+                "Rarity": "N",
+                "Price": 30,
+                "Condition": "Good"
+            }
+        }
+    }
+]
